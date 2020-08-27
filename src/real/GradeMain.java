@@ -13,13 +13,15 @@ public class GradeMain {
 		for (int i = 0; i < n; i++) {
 			GradeDataVO vo = new GradeDataVO();
 			DataInput inputData = new DataInput();
+			int data[] = new int[5];
 			vo.setStudentName(inputData.strDataInput("이름"));
 			vo.setStudentId(inputData.intDataInput("학번"));
-			vo.setKor(inputData.intDataInput("국어 점수"));
-			vo.setEng(inputData.intDataInput("영어 점수"));
-			vo.setMat(inputData.intDataInput("수학 점수"));
-			vo.setHis(inputData.intDataInput("한국사 점수"));
-			vo.setEdps(inputData.intDataInput("전산 점수"));
+			data[0] = inputData.intDataInput("국어 점수");
+			data[1] = inputData.intDataInput("영어 점수");
+			data[2] = inputData.intDataInput("수학 점수");
+			data[3] = inputData.intDataInput("한국사 점수");
+			data[4] = inputData.intDataInput("전산 점수");
+			vo.setSubject(data);
 
 			GradeProcess gradeProcess = new GradeProcess(vo);
 			vo.setTotal(gradeProcess.total());

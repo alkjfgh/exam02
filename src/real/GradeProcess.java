@@ -9,7 +9,12 @@ public class GradeProcess {
 	}
 
 	public int total() {
-		return vo.getKor() + vo.getEng() + vo.getMat() + vo.getHis() + vo.getEdps();
+		int[] data=vo.getSubject();
+		int sum=0;
+		for(int i=0;i<5;i++) {
+			sum+=data[i];
+		}
+		return sum;
 	}
 
 	public double avg(int i) {

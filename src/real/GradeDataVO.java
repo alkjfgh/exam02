@@ -1,13 +1,11 @@
 package real;
 
+import java.util.Arrays;
+
 public class GradeDataVO {
 	private String studentName;
 	private int studentId;
-	private int kor;
-	private int eng;
-	private int mat;
-	private int his;
-	private int edps;
+	private int subject[];
 	private int total;
 	private double avg;
 
@@ -16,15 +14,11 @@ public class GradeDataVO {
 		// TODO 자동 생성된 생성자 스텁
 	}
 
-	public GradeDataVO(String studentName, int studentId, int kor, int eng, int mat, int his, int edps) {
+	public GradeDataVO(String studentName, int studentId, int[] subject) {
 		super();
 		this.studentName = studentName;
 		this.studentId = studentId;
-		this.kor = kor;
-		this.eng = eng;
-		this.mat = mat;
-		this.his = his;
-		this.edps = edps;
+		this.subject = subject;
 	}
 
 	public String getStudentName() {
@@ -43,44 +37,12 @@ public class GradeDataVO {
 		this.studentId = studentId;
 	}
 
-	public int getKor() {
-		return kor;
+	public int[] getSubject() {
+		return subject;
 	}
 
-	public void setKor(int kor) {
-		this.kor = kor;
-	}
-
-	public int getEng() {
-		return eng;
-	}
-
-	public void setEng(int eng) {
-		this.eng = eng;
-	}
-
-	public int getMat() {
-		return mat;
-	}
-
-	public void setMat(int mat) {
-		this.mat = mat;
-	}
-
-	public int getHis() {
-		return his;
-	}
-
-	public void setHis(int his) {
-		this.his = his;
-	}
-
-	public int getEdps() {
-		return edps;
-	}
-
-	public void setEdps(int edps) {
-		this.edps = edps;
+	public void setSubject(int[] subject) {
+		this.subject = subject;
 	}
 
 	public int getTotal() {
@@ -106,13 +68,9 @@ public class GradeDataVO {
 		long temp;
 		temp = Double.doubleToLongBits(avg);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + edps;
-		result = prime * result + eng;
-		result = prime * result + his;
-		result = prime * result + kor;
-		result = prime * result + mat;
 		result = prime * result + studentId;
 		result = prime * result + ((studentName == null) ? 0 : studentName.hashCode());
+		result = prime * result + Arrays.hashCode(subject);
 		result = prime * result + total;
 		return result;
 	}
@@ -128,22 +86,14 @@ public class GradeDataVO {
 		GradeDataVO other = (GradeDataVO) obj;
 		if (Double.doubleToLongBits(avg) != Double.doubleToLongBits(other.avg))
 			return false;
-		if (edps != other.edps)
-			return false;
-		if (eng != other.eng)
-			return false;
-		if (his != other.his)
-			return false;
-		if (kor != other.kor)
-			return false;
-		if (mat != other.mat)
-			return false;
 		if (studentId != other.studentId)
 			return false;
 		if (studentName == null) {
 			if (other.studentName != null)
 				return false;
 		} else if (!studentName.equals(other.studentName))
+			return false;
+		if (!Arrays.equals(subject, other.subject))
 			return false;
 		if (total != other.total)
 			return false;
@@ -152,8 +102,8 @@ public class GradeDataVO {
 
 	@Override
 	public String toString() {
-		return "SubjectDataVO [studentName=" + studentName + ", studentId=" + studentId + ", kor=" + kor + ", eng="
-				+ eng + ", mat=" + mat + ", his=" + his + ", edps=" + edps + ", total=" + total + ", avg=" + avg + "]";
+		return "GradeDataVO [studentName=" + studentName + ", studentId=" + studentId + ", subject="
+				+ Arrays.toString(subject) + ", total=" + total + ", avg=" + avg + "]";
 	}
 
 }
