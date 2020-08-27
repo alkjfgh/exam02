@@ -8,7 +8,7 @@ public class GradeMain {
 	public static void main(String[] args) {
 		System.out.print("인원수를 입력하세요 : ");
 		Scanner scan = new Scanner(System.in);
-		
+
 		int n = Integer.parseInt(scan.next());
 		for (int i = 0; i < n; i++) {
 			GradeDataVO vo = new GradeDataVO();
